@@ -1,3 +1,4 @@
+using core.Interfaces;
 using infrastructure.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -24,6 +25,7 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
 
+        services.AddScoped<IProductRepository,ProductRepsitory>();
         services.AddDbContext<StoreContext>(x =>
         x.UseSqlite(_config.GetConnectionString("DefaultConnection")));
             services.AddControllers();
